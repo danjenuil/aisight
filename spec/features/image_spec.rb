@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'faker'
 
 RSpec.describe 'Image' do
   before do
@@ -6,7 +7,7 @@ RSpec.describe 'Image' do
     @user = FactoryBot.create(:user)
 
     25.times do
-      FactoryBot.create(:image, user: @user)
+      FactoryBot.create(:image, title: Faker::Address.city,  user: @user)
     end
   end
 
