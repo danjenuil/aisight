@@ -10,10 +10,12 @@ RSpec.describe 'Image' do
     25.times do
       FactoryBot.create(:image, title: Faker::Address.city,  user: @user)
     end
+
+    sign_in @user
+    visit '/images'
   end
 
   it 'allows user to see a list of uploaded images' do
-
     expect(page).to have_text('Images')
     within('table') do
       expect(page).to have_selector('tr', count: 26) # 25 images + 1 header row
@@ -21,9 +23,6 @@ RSpec.describe 'Image' do
   end
 
   it 'allows user to see individual image on its own page' do
-    visit "/images"
-    image_title = nil
-
     # Assuming the 2nd cell in the first row triggers the action
     within('table tbody tr:first-child') do
       find('td:last-child').click_link('View')
