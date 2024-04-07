@@ -11,7 +11,10 @@
       <% @images.each do |image| %>
         <tr>
           <td><%= image.title %></td>
-          <td><%= link_to 'View', image_path(image) %></td>
+          <td>
+            <%= link_to 'View', image_path(image) %>
+            <%= link_to 'Delete', image_path(image), data: { turbo_method: :delete }%>
+          </td>
         </tr>
       <% end %>
     </tbody>
