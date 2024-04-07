@@ -33,4 +33,16 @@ RSpec.describe 'Image' do
     expect(page).to have_link('Edit')
     expect(page).to have_link('Delete')
   end
+
+  it 'allows user to delete an image' do
+    # Assuming the 2nd cell in the first row triggers the action
+    within('table tbody tr:first-child') do
+      find('td:last-child').click_link('Delete')
+    end
+
+    expect(page).to have_text('Image was successfully destroyed.')
+    within('table') do
+      expect(page).to have_selector('tr', count: 25) # 25 images + 1 header row
+    end
+  end
 end
