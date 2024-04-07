@@ -1,5 +1,3 @@
 class SitesController < ApplicationController
-  def homepage
-
-  end
+  def homepage ;end
 end

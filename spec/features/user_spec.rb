@@ -8,8 +8,8 @@ RSpec.describe 'User' do
 
     it 'display link to sign into AiSight' do
       expect(page).to have_text('Sign in to AiSight')
-      expect(page).to have_field('#user_email')
-      expect(page).to have_field('#user_password')
+      expect(page).to have_field('user[email]')
+      expect(page).to have_field('user[password]')
       expect(page).to have_button('Sign In')
     end
   end
