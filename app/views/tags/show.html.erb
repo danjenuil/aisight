@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Tags</th>
       <th>Total Tags</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +19,9 @@
           <% end %>
         </td>
         <td><%= image.tags.count %></td>
+        <td>
+          <%= link_to 'View', image %>
+        </td>
       </tr>
     <% end %>
   </tbody>
