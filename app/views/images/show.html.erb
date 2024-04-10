@@ -1,4 +1,10 @@
 <h1>Images / <%= @image.title %></h1>
 
+<div class="image-tags">
+  <% @image.tags.each do |tag| %>
+    <%= link_to tag.name, tag, class: 'image-tag' %>
+  <% end %>
+</div>
+
 <%= link_to 'Edit', '#' %>
 <%= link_to 'Delete', '#' %>

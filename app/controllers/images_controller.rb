@@ -14,7 +14,7 @@ class ImagesController < ApplicationController
   def create
     @image = current_user.images.new(image_params)
     if @image.save
-      redirect_to images_path, notice: 'Image was successfully uploaded.'
+      redirect_to @image, notice: 'Image was successfully uploaded.'
     else
       render :new
     end
