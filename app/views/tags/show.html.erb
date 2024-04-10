@@ -21,6 +21,7 @@
         <td><%= image.tags.count %></td>
         <td>
           <%= link_to 'View', image %>
+          <%= link_to 'Delete', image, data: { turbo_method: :delete }%>
         </td>
       </tr>
     <% end %>

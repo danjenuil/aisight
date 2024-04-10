@@ -23,7 +23,7 @@ class ImagesController < ApplicationController
   def destroy
     @image = Image.find(params[:id])
     @image.destroy
-    redirect_to images_path, notice: 'Image was successfully destroyed.'
+    redirect_back_or_to images_path, notice: 'Image was successfully destroyed.'
   end
 
   private
