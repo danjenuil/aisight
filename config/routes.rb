@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   root to: "sites#homepage"
 
   resources :images
+  resources :tags
 end
