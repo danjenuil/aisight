@@ -14,8 +14,8 @@ RSpec.describe 'Tag' do
         FactoryBot.create(:tag, name: tag_name, images: FactoryBot.create_list(:image, index + 1, user: user))
       end
 
-
       visit '/tags'
+
       expect(page).to have_text('Tags')
       within('table') do
         expect(page).to have_selector('tr', count: 4) # 3 tags + 1 header row
@@ -40,6 +40,16 @@ RSpec.describe 'Tag' do
       within('table') do
         expect(page).to have_selector('tr', count: 4) # 3 images + 1 header row
       end
+    end
+
+    it 'have a link to view the image' do
+      tag = FactoryBot.create(:tag, name: 'House', images: FactoryBot.create_list(:image, 3, user: user))
+      visit "/tags/#{tag.id}"
+      within('table tbody tr:first-child') do
+        find('td:last-child').click_link('View')
+      end
+
+      expect(current_path).to match(/images\/\d+/)
     end
   end
 end
