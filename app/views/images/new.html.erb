@@ -1,0 +1,8 @@
+<h1>Upload an image</h1>
+
+<%= form_with(model: @image) do |f| %>
+  <%= f.label :title, 'Title' %>
+  <%= f.text_field :title, placeholder: 'Please enter a title', required: true %>
+  <%= f.file_field :file, required: true, accept: 'image/jpeg, image/png, image/gif' %>
+  <%= f.submit %>
+<% end %>

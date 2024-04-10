@@ -51,12 +51,12 @@ RSpec.describe 'Image' do
     expect(current_path).to eq('/images/new')
 
     fill_in 'Title', with: Faker::Address.city
-    attach_file 'image[image]', Rails.root.join('spec', 'support', 'image.jpg')
+    attach_file 'image[file]', Rails.root.join('spec', 'support', 'sample_image.jpg')
     click_button 'Create Image'
 
-    expect(page).to have_text('Image was successfully created.')
+    expect(page).to have_text('Image was successfully uploaded.')
     within('table') do
-      expect(page).to have_selector('tr', count: 27) # 25 images + 1 header row
+      expect(page).to have_selector('tr', count: 27) # 26 images + 1 header row
     end
   end
 end
