@@ -1,0 +1,24 @@
+<h1>Tags / <%= @tag.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Tags</th>
+      <th>Total Tags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @images.each do |image| %>
+      <tr>
+        <td><%= image.title %></td>
+        <td>
+          <% image.tags.each do |tag| %>
+            <%= link_to tag.name, tag %>
+          <% end %>
+        </td>
+        <td><%= image.tags.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
