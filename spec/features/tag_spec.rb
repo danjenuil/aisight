@@ -51,5 +51,18 @@ RSpec.describe 'Tag' do
 
       expect(current_path).to match(/images\/\d+/)
     end
+
+    it 'user can delete an image' do
+      tag = FactoryBot.create(:tag, name: 'House', images: FactoryBot.create_list(:image, 3, user: user))
+      visit "/tags/#{tag.id}"
+      within('table tbody tr:first-child') do
+        find('td:last-child').click_link('Delete')
+      end
+
+      expect(page).to have_text('Image was successfully destroyed.')
+      within('table') do
+        expect(page).to have_selector('tr', count: 3) # 2 images + 1 header row
+      end
+    end
   end
 end
