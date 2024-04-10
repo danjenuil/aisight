@@ -57,9 +57,8 @@ RSpec.describe 'Image' do
     attach_file 'image[file]', Rails.root.join('spec', 'support', 'sample_image.jpg')
     click_button 'Create Image'
 
+    expect(current_path).to match(/images\/\d+/)
     expect(page).to have_text('Image was successfully uploaded.')
-    within('table') do
-      expect(page).to have_selector('tr', count: 27) # 26 images + 1 header row
-    end
+    expect(find('div.image-tags')).to have_selector('a.image-tag', minimum: 1)
   end
 end
